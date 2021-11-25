@@ -5,6 +5,11 @@
 #include <windows.h>
 
 
+int cadastroCliente();
+int menuCliente();
+int menuClube();
+int menuSup();
+
 #define TAMANHO 5
 #define VERD 1
 #define FALSO 0
@@ -118,9 +123,9 @@ void limpa_linha()
 					printf("Voltando ao Menu Anterior.");
 					system("pause");
 					system("cls");
-				//	menuCliente();
+				    menuCliente();
 				}
-
+    return (0);
 	}
 
 
@@ -183,6 +188,7 @@ int listarCad(){
 
 //Função listarCliente
 int listarCliente(){
+  int resp = FALSO;
   int i;
   for(i=0;i<TAMANHO; i++){
     if(vetCad[i].id != -1){
@@ -199,14 +205,15 @@ int listarCliente(){
  printf("\n\nVoltar ao menu inicial.");
  printf("\n\n");
  system("pause");
- menuCliente();
+
+resp = VERD;
+return resp;
 }
 
 
 // buscarCad()
 int buscarCad(int pos){
   int resp = FALSO;
-  int i;
   printf("\n***************************************");
   printf("\nIdentificador: %d", vetCad[pos].id);
   printf("\nNome         : %s", vetCad[pos].nomeProd);
@@ -288,7 +295,6 @@ int excluirCad(){
 
 /*
 // F U N Ç Õ E S  C A R R I N H O 
-
 // Função inicializarCad
  int inicializarCarrinho(){
   int resp = FALSO;
@@ -299,7 +305,6 @@ int excluirCad(){
   resp = VERD;
   return resp;
   }
-
 //Função entradaCad()
 int entradaCarrinho(int pos){ // posição livre para a inclusão
    int resp = FALSO;
@@ -320,10 +325,8 @@ int entradaCarrinho(int pos){ // posição livre para a inclusão
    resp = VERD;
    return resp;
 }
-
 //Função ListarCad
 int listarCarrinho(){
-
   int i;
   for(i=0;i<TAMANHO; i++){
     if(vetCad[i].id != -1){
@@ -333,7 +336,6 @@ int listarCarrinho(){
       printf("\nPreço       : %.2f", vetCad[i].precoProd);   
 	  printf("\nEstoque     : %.0f", vetCad[i].estoqueProd);               
    }
-
   int resp = FALSO;
   //int i;
   for(i=0;i<TAMANHO; i++){
@@ -351,8 +353,6 @@ int listarCarrinho(){
  resp = VERD;
  return resp;
 }
-
-
 //Função listarCliente
 int listarCarrinho(){
   int i;
@@ -373,8 +373,6 @@ int listarCarrinho(){
  system("pause");
  menuCliente();
 }
-
-
 // buscarCad()
 int buscarCarrinho(int pos){
   int resp = FALSO;
@@ -391,7 +389,6 @@ int buscarCarrinho(int pos){
   resp = VERD;
   return resp;
 }
-
 //incluirCad()
 int incluirCarrinho(){
   int resp = FALSO;
@@ -412,8 +409,6 @@ int incluirCarrinho(){
   }
   return resp;
 }
-
-
 // AlterarCad
 int alterarCarrinho(){
   int resp = FALSO;
@@ -434,7 +429,6 @@ int alterarCarrinho(){
   }
   return resp;
 }
-
 //excluirCad()
 int excluirCarrinho(){
   int resp = FALSO;
@@ -455,10 +449,7 @@ int excluirCarrinho(){
   }
   return resp;
 }
-
 // F I M  F U N Ç Õ E S  C A R R I N H O 
-
-
 */
 // F U N Ç Õ E S  M E N U
 
@@ -525,7 +516,7 @@ int menuClube()
       system("pause");
     }
   }
-
+return(0);
 }
 
 //Função Menu Pet Box
@@ -571,6 +562,7 @@ int menuPetbox()
     system("pause");
     }
   }
+  return(0);
 }
 
 //Função Petbox Fixa
@@ -698,7 +690,6 @@ int clienteCarrinho()
                printf("\nERRO ao Alterar no Carrinho!");
              } 
              break;  
-
   case 3 : printf("***** Exclusão *****");
              if(excluirCarrinho()){
                printf("\nProduto Excluído!");
@@ -706,8 +697,6 @@ int clienteCarrinho()
                printf("\nERRO ao Excluir no Carrinho!");
              } 
              break;
-
-
   case 4 : printf("***** Listagem *****");
              if(listarCarrinho()){
                printf("\nListagem de Produtos!");
@@ -715,16 +704,13 @@ int clienteCarrinho()
                printf("\nERRO ao Listar o Produto!");
              } 
              break;
-
   case 5 : printf("***** Saída do Programa *****");
              continua = FALSO;
              break;
-
   default: printf("\nOpção inválida!!!");
   		   printf("\n\n");
      	   system("pause");
 ;
-
   }
 */
   fflush(stdin);// limpeza do buffer do teclado para não pular leituras
@@ -921,7 +907,7 @@ int menuSup() {
  }while(continua);
 
 	
-	return 0;
+	return (0);
 }
 
 // F I M  F U N Ç Õ E S  M E N U
