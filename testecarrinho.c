@@ -12,6 +12,7 @@ int menuSup();
 int menuPetbox();
 int petboxFixa();
 int listarCarrinho();
+int menuLoja();
 
 
 #define TAMANHO 12
@@ -24,20 +25,7 @@ int listarCarrinho();
  
 
 
- /* struct data{
-    int dia;
-    int mes;
-    int ano;
-  }; vetData;*/
-
- /* struct cliente{
-  	char nomeCliente[100], endCliente[100], telefoneCliente[20];
-  	struct data dataNascCliente;
-  	float ;
-  }; vetCliente;
-*/
-
-
+ 
 // S T R U C T S
 
 
@@ -45,8 +33,6 @@ int listarCarrinho();
   struct produtos{
   	int id; // -1 indica que a posição do elemento no vetor está vazia
     char nomeProd[100];
-   // struct data dataNasc;
-   // char telefone[20];
     float precoProd, estoqueProd;
   } vetCad[TAMANHO];
 
@@ -55,8 +41,6 @@ int listarCarrinho();
   struct carrinho{
   	int idCarrinho; // -1 indica que a posição do elemento no vetor está vazia
     char nomeCarrinho[100];
-   // struct data dataNasc;
-   // char telefone[20];
     float precoCarrinho, qtdCarrinho;
   } vetCarrinho[TAMANHO];
   
@@ -155,11 +139,6 @@ int entradaCad(int pos){ // posição livre para a inclusão
    printf("\nNome        : ");
    scanf("%s", vetCad[pos].nomeProd); // não vai poder ter espaço no nome
    limpa_linha();
-  //printf("\nData Nasc - DDMMAAAA  :");
-  // scanf("%d %d %d", &vetAgenda[pos].dataNasc.dia, 
-  //       &vetAgenda[pos].dataNasc.mes, &vetAgenda[pos].dataNasc.ano);
-  // printf("\nTelefone     :");
-  // scanf("%s", vetAgenda[pos].telefone);
    printf("\nPreço       : ");
    scanf("%f", &vetCad[pos].precoProd);  
    limpa_linha();
@@ -168,22 +147,6 @@ int entradaCad(int pos){ // posição livre para a inclusão
    resp = VERD;
    return resp;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -196,9 +159,6 @@ int listarCad(){
       printf("\n------------------------------------------Listagem de produtos -------------------------------------------");
       printf("\nIdentificador: %d", vetCad[i].id);
       printf("\nNome         : %s", vetCad[i].nomeProd);
-    //  printf("\nData Nasc.   : %02d/%02d/%04d", vetAgenda[i].dataNasc.dia, 
-    //        vetAgenda[i].dataNasc.mes, vetAgenda[i].dataNasc.ano);
-    //  printf("\nTelefone     : %s", vetAgenda[i].telefone);
       printf("\nPreço       : %.2f", vetCad[i].precoProd);    
 	  printf("\nEstoque     : %.0f", vetCad[i].estoqueProd);          
    }
@@ -206,29 +166,6 @@ int listarCad(){
  resp = VERD;
  return resp;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 //Função listarCliente
@@ -240,9 +177,6 @@ int listarCliente(){
       printf("\n------------------------------------------Listagem de produtos -------------------------------------------");
       printf("\nIdentificador: %d", vetCad[i].id);
       printf("\nNome         : %s", vetCad[i].nomeProd);
-    //  printf("\nData Nasc.   : %02d/%02d/%04d", vetAgenda[i].dataNasc.dia, 
-    //        vetAgenda[i].dataNasc.mes, vetAgenda[i].dataNasc.ano);
-    //  printf("\nTelefone     : %s", vetAgenda[i].telefone);
       printf("\nPreço       : %.2f", vetCad[i].precoProd);   
 	  printf("\nEstoque     : %.0f", vetCad[i].estoqueProd);               
    }
@@ -259,9 +193,6 @@ int buscarCad(int pos){
   printf("\n-------------------------------------------Busca por produtos---------------------------------------------");
   printf("\nIdentificador: %d", vetCad[pos].id);
   printf("\nNome         : %s", vetCad[pos].nomeProd);
- // printf("\nData Nasc.   : %02d/%02d/%04d", vetAgenda[pos].dataNasc.dia, 
- //            vetAgenda[pos].dataNasc.mes, vetAgenda[pos].dataNasc.ano);
- // printf("\nTelefone     : %s", vetAgenda[pos].telefone);
   printf("\nPreço       : %.2f", vetCad[pos].precoProd);   
   printf("\nEstoque     : %.0f", vetCad[pos].estoqueProd);               
            
@@ -356,11 +287,6 @@ int entradaCarrinho(int pos){ // posição livre para a inclusão
    vetCarrinho[pos].idCarrinho = pos;
    printf("\nNome        : ");
    scanf("%s", vetCarrinho[pos].nomeCarrinho); // não vai poder ter espaço no nome
-  //printf("\nData Nasc - DDMMAAAA  :");
-  // scanf("%d %d %d", &vetAgenda[pos].dataNasc.dia, 
-  //       &vetAgenda[pos].dataNasc.mes, &vetAgenda[pos].dataNasc.ano);
-  // printf("\nTelefone     :");
-  // scanf("%s", vetAgenda[pos].telefone);
    printf("\nPreço       : ");
    scanf("%f", &vetCarrinho[pos].precoCarrinho);  
    printf("\nEstoque     : ");
@@ -369,41 +295,6 @@ int entradaCarrinho(int pos){ // posição livre para a inclusão
    return resp;
 }
 
-
-/*
-//Função ListarCad
-int listarCarrinho(){
-  int resp = FALSO;
-  int i;
-  for(i=0;i<TAMANHO; i++){
-    if(vetCad[i].id != -1){
-      printf("\n***************************************");
-      printf("\nIdentificador: %d", vetCad[i].id);
-      printf("\nNome         : %s", vetCad[i].nomeProd);
-      printf("\nPreço       : %.2f", vetCad[i].precoProd);   
-	  printf("\nEstoque     : %.0f", vetCad[i].estoqueProd);               
-   }
-
-int resp = FALSO;
-int i;
-for(i=0;i<TAMANHO; i++){
-    if(vetCarrinho[i].idCarrinho!=-1){
-      printf("\n***************************************");
-      printf("\nIdentificador: %d", vetCarrinho[i].idCarrinho);
-      printf("\nNome         : %s", vetCarrinho[i].nomeCarrinho);
-    //  printf("\nData Nasc.   : %02d/%02d/%04d", vetAgenda[i].dataNasc.dia, 
-    //        vetAgenda[i].dataNasc.mes, vetAgenda[i].dataNasc.ano);
-    //  printf("\nTelefone     : %s", vetAgenda[i].telefone);
-      printf("\nPreço       : %.2f", vetCarrinho[i].precoCarrinho);    
-	  printf("\nEstoque     : %.0f", vetCarrinho[i].qtdCarrinho);          
-   }
-
-  
- }
- resp = VERD;
- return resp;
-}
-*/
 
 //Função listarCliente
 int listarCarrinho(){
@@ -414,9 +305,6 @@ int listarCarrinho(){
       printf("\n***************************************");
       printf("\nIdentificador: %d", vetCarrinho[i].idCarrinho);
       printf("\nNome         : %s", vetCarrinho[i].nomeCarrinho);
-    //  printf("\nData Nasc.   : %02d/%02d/%04d", vetAgenda[i].dataNasc.dia, 
-    //        vetAgenda[i].dataNasc.mes, vetAgenda[i].dataNasc.ano);
-    //  printf("\nTelefone     : %s", vetAgenda[i].telefone);
       printf("\nPreço       : %.2f", vetCarrinho[i].precoCarrinho);   
 	  printf("\nEstoque     : %.0f", vetCarrinho[i].qtdCarrinho);               
    }
@@ -436,9 +324,6 @@ int buscarCarrinho(int posicao){
   printf("\n***************************************");
   printf("\nIdentificador: %d", vetCarrinho[posicao].idCarrinho);
   printf("\nNome         : %s", vetCarrinho[posicao].nomeCarrinho);
- // printf("\nData Nasc.   : %02d/%02d/%04d", vetAgenda[pos].dataNasc.dia, 
- //            vetAgenda[pos].dataNasc.mes, vetAgenda[pos].dataNasc.ano);
- // printf("\nTelefone     : %s", vetAgenda[pos].telefone);
   printf("\nPreço       : %.2f", vetCarrinho[posicao].precoCarrinho);   
   printf("\nEstoque     : %.0f", vetCarrinho[posicao].qtdCarrinho);               
            
@@ -698,10 +583,6 @@ switch (opFixa)
       system("pause");
       }
       }
- 
-      
-
-
     break;
     }
    
@@ -719,27 +600,6 @@ switch (opFixa)
     system("pause");
     }
   }
-
-    
-    
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-      
-
-
-
 
   return 0;
 }
@@ -874,15 +734,6 @@ int menuGlobal()
 
 
 
-
-
-
-
-
-
-
-
-
 // Menu Principal
 int main()
 	{
@@ -906,13 +757,6 @@ int main()
 	menuGlobal();
 	return(0);
     }
-
-
-
-
-
-
-
 
 
 
@@ -1001,7 +845,7 @@ int menuCliente(){
 
 int menuLoja()
 {
-int idAddCarrinho, i, opcao;
+int idAddCarrinho, i, opcao ;
 float qtdAddCarrinho;
 printf("Produtos da loja..: \n");
 listarCliente();
@@ -1020,8 +864,9 @@ do
           if (vetCad[i].estoqueProd > qtdAddCarrinho )
           {
           vetCarrinho[i].idCarrinho = vetCad[i].id;
-          //vetCarrinho[i].nomeCarrinho = vetCad[i].nomeProd;
-          vetCarrinho[i].precoCarrinho = vetCad[i].precoProd;
+          strcpy (vetCarrinho[i].nomeCarrinho, vetCad[i].nomeProd);
+          vetCarrinho[i].precoCarrinho = vetCarrinho[i].precoCarrinho + (vetCad[i].precoProd*qtdAddCarrinho);
+          vetCarrinho[i].qtdCarrinho = vetCarrinho[i].qtdCarrinho + qtdAddCarrinho;
           vetCad[i].estoqueProd = vetCad[i].estoqueProd - qtdAddCarrinho;
 
           printf("\n\nProduto adicionado ao carrinho..: ");
