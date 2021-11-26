@@ -14,7 +14,7 @@ int petboxFixa();
 int listarCarrinho();
 
 
-#define TAMANHO 5
+#define TAMANHO 12
 #define VERD 1
 #define FALSO 0
 
@@ -972,7 +972,7 @@ int menuCliente(){
 	             break;  
 	  
 	  case 3 : 	system("cls");//loja
-	  			  //menuLoja();
+	  			    menuLoja();
 	             break;  	  
 	 
 	  case 4 : 	system("cls");//ofertas
@@ -996,6 +996,60 @@ int menuCliente(){
 	  fflush(stdin);// limpeza do buffer do teclado para não pular leituras
 	 }while(continua);
     }	
+
+//Menu Loja
+
+int menuLoja()
+{
+int idAddCarrinho, i, opcao;
+float qtdAddCarrinho;
+printf("Produtos da loja..: \n");
+listarCliente();
+printf("\nDeseja adicionar algum produto ao carrinho..? (1-Sim 0-Não): ");
+scanf("%d", &opcao);
+do
+{
+
+  printf("\nDigite o código do produto que deseja adicionar ao carrinho..: ");
+  scanf("%d", &idAddCarrinho);
+  printf("\nDigite a quantidade do produto que deseja adicionar ao carrinho..: ");
+  scanf("%f", &qtdAddCarrinho);
+  i = idAddCarrinho;
+        if (idAddCarrinho == vetCad[i].id)
+        {
+          if (vetCad[i].estoqueProd > qtdAddCarrinho )
+          {
+          vetCarrinho[i].idCarrinho = vetCad[i].id;
+          //vetCarrinho[i].nomeCarrinho = vetCad[i].nomeProd;
+          vetCarrinho[i].precoCarrinho = vetCad[i].precoProd;
+          vetCad[i].estoqueProd = vetCad[i].estoqueProd - qtdAddCarrinho;
+
+          printf("\n\nProduto adicionado ao carrinho..: ");
+          printf("\n\nId..: %d\nNome..: %s\nPreço..: %.2f\nQtd..: %.0f", vetCarrinho[i].idCarrinho, vetCarrinho[i].nomeCarrinho,vetCarrinho[i].precoCarrinho,vetCarrinho[i].qtdCarrinho);
+          printf("\nDeseja adicionar mais algum produto ao carrinho..? (1-Sim 0-Não): ");
+          scanf("%d", &opcao);
+          }
+          else
+          {
+            printf("\nQuantidade ultrapassa a quantidade no estoque.");
+            system("pause");
+            system("cls");
+            menuLoja();
+          } 
+        }
+        else 
+        {
+          printf ("\nCódigo não encontrado.");
+          system("pause");
+          system("cls");
+          menuLoja();
+        }
+} while (opcao==1);
+system("pause");
+system("cls");
+menuCliente();
+return 0;
+}
 
 
 
