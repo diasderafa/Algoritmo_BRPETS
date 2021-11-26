@@ -4,14 +4,14 @@
 #include <string.h>
 #include <windows.h>
 
-
+/*
 int cadastroCliente();
 int menuCliente();
 int menuClube();
 int menuSup();
 int menuPetbox();
 int petboxFixa();
-
+*/
 
 #define TAMANHO 5
 #define VERD 1
@@ -337,10 +337,10 @@ int excluirCad(){
 
 // F I M  F U N Ç Õ E S  C A D A S T R O 
 
-/*
+
 // F U N Ç Õ E S  C A R R I N H O 
-// Função inicializarCad
- int inicializarCarrinho(){
+// Função inicializarCarrinho
+  int inicializarCarrinho(){
   int resp = FALSO;
   int i;
   for(i=0;i<TAMANHO; i++){
@@ -349,9 +349,33 @@ int excluirCad(){
   resp = VERD;
   return resp;
   }
-//Função entradaCad()
-int entradaCarrinho(int pos){ // posição livre para a inclusão
-   int resp = FALSO;
+  
+//Função entradaCarrinho()
+int entradaCarrinho(int pos)
+{ // posição livre para a inclusão
+   int resp = FALSO, idAdicionar;
+   printf("inclusao de produto no carrinho.");
+   printf("digite o identificador do produto..: ");
+   scanf("%d", &idAdicionar);
+   for(i=0; i>TAMANHO; i++)
+   {
+    if (idAdicionar==vetCad[i].idCarrinho)
+    {
+      vetCad[i].id= vetCarrinho[i].idCarrinho
+      vetCad[i].nomeProd=vetCarrinho[i].nomeCarrinho
+      vetCad[i].precoProd=vetCarrinho[i].precoCarrinho
+      //vetCad[i].estoqueProd=vetCarrinho[i].qtdCarrinho
+      printf("Qual a quantidade?")
+      scanf("%d", &vetCarrinho[i].qtdCarrinho);
+      printf("Produto adicionado ao carrinho.");
+    }
+    else 
+    {
+      printf("Produto não cadastrado.");
+    }
+   }
+   
+   /*
    printf("\n**********Inclusão de novo produto!********");
    printf("\nIdentificador: %d", pos);
    vetCarrinho[pos].idCarrinho = pos;
@@ -365,14 +389,16 @@ int entradaCarrinho(int pos){ // posição livre para a inclusão
    printf("\nPreço       : ");
    scanf("%f", &vetCarrinho[pos].precoCarrinho);  
    printf("\nEstoque     : ");
-   scanf("%f", &vetCarrinho[pos].qtdCarrinho); 
+   scanf("%f", &vetCarrinho[pos].qtdCarrinho); */
    resp = VERD;
    return resp;
 }
+ 
+
 //Função ListarCad
 int listarCarrinho(){
   int i;
-  for(i=0;i<TAMANHO; i++){
+  /*for(i=0;i<TAMANHO; i++){
     if(vetCad[i].id != -1){
       printf("\n***************************************");
       printf("\nIdentificador: %d", vetCad[i].id);
@@ -380,24 +406,23 @@ int listarCarrinho(){
       printf("\nPreço       : %.2f", vetCad[i].precoProd);   
 	  printf("\nEstoque     : %.0f", vetCad[i].estoqueProd);               
    }
-  int resp = FALSO;
-  //int i;
+  //int i;*/
   for(i=0;i<TAMANHO; i++){
     if(vetCarrinho[i].idCarrinho != -1){
       printf("\n***************************************");
       printf("\nIdentificador: %d", vetCarrinho[i].idCarrinho);
       printf("\nNome         : %s", vetCarrinho[i].nomeCarrinho);
-    //  printf("\nData Nasc.   : %02d/%02d/%04d", vetAgenda[i].dataNasc.dia, 
-    //        vetAgenda[i].dataNasc.mes, vetAgenda[i].dataNasc.ano);
-    //  printf("\nTelefone     : %s", vetAgenda[i].telefone);
       printf("\nPreço       : %.2f", vetCarrinho[i].precoCarrinho);    
-	  printf("\nEstoque     : %.0f", vetCarrinho[i].qtdCarrinho);          
+	    printf("\nEstoque     : %.0f", vetCarrinho[i].qtdCarrinho);          
    }
  }
- resp = VERD;
+ int resp = FALSO;//?
+// resp = VERD;//?
  return resp;
 }
-//Função listarCliente
+
+/*
+//Função listarCarrinho
 int listarCarrinho(){
   int i;
   for(i=0;i<TAMANHO; i++){
@@ -405,9 +430,6 @@ int listarCarrinho(){
       printf("\n***************************************");
       printf("\nIdentificador: %d", vetCarrinho[i].idCarrinho);
       printf("\nNome         : %s", vetCarrinho[i].nomeCarrinho);
-    //  printf("\nData Nasc.   : %02d/%02d/%04d", vetAgenda[i].dataNasc.dia, 
-    //        vetAgenda[i].dataNasc.mes, vetAgenda[i].dataNasc.ano);
-    //  printf("\nTelefone     : %s", vetAgenda[i].telefone);
       printf("\nPreço       : %.2f", vetCarrinho[i].precoCarrinho);   
 	  printf("\nEstoque     : %.0f", vetCarrinho[i].estoqueCarrinho);               
    }
@@ -416,7 +438,8 @@ int listarCarrinho(){
  printf("\n\n");
  system("pause");
  menuCliente();
-}
+}*/
+
 // buscarCad()
 int buscarCarrinho(int pos){
   int resp = FALSO;
@@ -424,15 +447,14 @@ int buscarCarrinho(int pos){
   printf("\n***************************************");
   printf("\nIdentificador: %d", vetCarrinho[pos].idCarrinho);
   printf("\nNome         : %s", vetCarrinho[pos].nomeCarrinho);
- // printf("\nData Nasc.   : %02d/%02d/%04d", vetAgenda[pos].dataNasc.dia, 
- //            vetAgenda[pos].dataNasc.mes, vetAgenda[pos].dataNasc.ano);
- // printf("\nTelefone     : %s", vetAgenda[pos].telefone);
   printf("\nPreço       : %.2f", vetCarrinho[pos].precoCarrinho);   
   printf("\nEstoque     : %.0f", vetCarrinho[pos].qtdCarrinho);               
            
   resp = VERD;
   return resp;
 }
+
+
 //incluirCad()
 int incluirCarrinho(){
   int resp = FALSO;
@@ -453,6 +475,8 @@ int incluirCarrinho(){
   }
   return resp;
 }
+
+
 // AlterarCad
 int alterarCarrinho(){
   int resp = FALSO;
@@ -473,6 +497,8 @@ int alterarCarrinho(){
   }
   return resp;
 }
+
+
 //excluirCad()
 int excluirCarrinho(){
   int resp = FALSO;
@@ -494,7 +520,9 @@ int excluirCarrinho(){
   return resp;
 }
 // F I M  F U N Ç Õ E S  C A R R I N H O 
-*/
+
+
+
 // F U N Ç Õ E S  M E N U
 
 //Função Menu Clube Pet
@@ -646,6 +674,7 @@ switch (opFixa)
 
 
 
+
     break;
     }
    
@@ -714,6 +743,7 @@ int clienteCarrinho()
   printf("\n5 - Voltar ao Menu Anterior.");
   printf("\nEscolha sua opção [1, 2, 3, 4, 5]:");
   scanf("%d", &opcao);
+
 /*
   switch(opcao){
   case 1 : printf("***** Inclusão *****");
@@ -723,21 +753,21 @@ int clienteCarrinho()
                 printf("\nERRO ao Incluir no Carrinho!");
              } 
              break;
- 
+ /*
   case 2 : printf("***** Alteração *****");
              if(alterarCarrinho()){
                printf("\nProduto Alterado!");
              } else {
                printf("\nERRO ao Alterar no Carrinho!");
              } 
-             break;  
+             break;  *//*
   case 3 : printf("***** Exclusão *****");
              if(excluirCarrinho()){
                printf("\nProduto Excluído!");
              } else {
                printf("\nERRO ao Excluir no Carrinho!");
              } 
-             break;
+             break;*//*
   case 4 : printf("***** Listagem *****");
              if(listarCarrinho()){
                printf("\nListagem de Produtos!");
@@ -752,8 +782,8 @@ int clienteCarrinho()
   		   printf("\n\n");
      	   system("pause");
 ;
-  }
-*/
+  }*/
+
   fflush(stdin);// limpeza do buffer do teclado para não pular leituras
  }while(continua);
 
@@ -762,7 +792,7 @@ int clienteCarrinho()
 }
 
 // Menu Principal
-int main()
+int administrador()
 	{
     // Define o valor das páginas de código UTF8 e default do Windows
     UINT CPAGE_UTF8 = 65001;
@@ -774,6 +804,11 @@ int main()
 	  int continua = VERD;  // VERD é uma constante que possui o valor 1
 	  if(inicializarCad()){
 	  printf("\nListagem de Produtos Inicializada!");
+	  } else {
+	  printf("\nERRO: Listagem de Produtos NÃO Inicializada!");
+	  }
+    if(inicializarCarrinho()){
+	  printf("\nListagem de Carriho Inicializada!");
 	  } else {
 	  printf("\nERRO: Listagem de Produtos NÃO Inicializada!");
 	  }
@@ -818,6 +853,87 @@ int main()
 	  fflush(stdin);// limpeza do buffer do teclado para não pular leituras
 	 }while(continua);
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Menu Principal
+int main()
+	{
+    // Define o valor das páginas de código UTF8 e default do Windows
+    UINT CPAGE_UTF8 = 65001;
+    UINT CPAGE_DEFAULT = GetConsoleOutputCP();
+    // Define codificação como sendo UTF-8
+    SetConsoleOutputCP(CPAGE_UTF8);
+
+    //setlocale(LC_ALL, "Portuguese");
+	  int opcao;
+	  system("cls");
+	  printf("-------------------------------------------------------------------------------------------------------\n");
+      printf("--------------------------******   ******  ******   ******* ***********  ******------------------------\n");
+      printf("-------------------------*      * *      * *      * *            *      *      ------------------------\n");
+      printf("-------------------------*      * *      * *      * *            *      *      ------------------------\n");
+      printf("-------------------------*   **   *    *   ******   ******       *       ***** ------------------------\n");
+      printf("-------------------------*      * *   *    *        *            *             *-----------------------\n");
+      printf("-------------------------*      * *     *  *        *            *             *-----------------------\n");
+      printf("--------------------------******  *      * *        *******      *       ******------------------------\n");
+      printf("-------------------------------------------------------------------------------------------------------\n");
+	  printf("\n1 - Administrador");
+	  printf("\n2 - Cliente");
+	  printf("\n3 - Fechar Programa\n");
+	  printf("\nEscolha sua opção [1, 2, 3]:");
+	  scanf("%d", &opcao);
+
+      switch(opcao)
+ 	 	{
+	  case 1 :  system("cls");
+	  			administrador();
+	             break;
+	 
+	  case 2 :  system("cls");
+	  			menuCliente();
+	             break;  
+	
+	  case 0 : 
+        exit(0);
+	    break;
+	
+	  default: printf("\nOpção inválida!!!");
+ 	 		   printf("\n\n");
+    	 	   system("pause");	
+	 	 }
+		
+	  return(0);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // Menu Cliente
 int menuCliente(){
@@ -894,6 +1010,8 @@ int menuCliente(){
 	  fflush(stdin);// limpeza do buffer do teclado para não pular leituras
 	 }while(continua);
     }	
+
+
 
 // Menu Cadastro Produtos
 int menuSup() {
