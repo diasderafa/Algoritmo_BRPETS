@@ -709,6 +709,12 @@ switch (opFixa)
       printf("\n--------------------------------------------------------------------------------------------------------\n\n");
       printf("\nDeseja adicionar algum produto ao carrinho..? (1-Sim 0-Não): ");
       scanf("%d", &opcao);
+      if (opcao=0)
+      {
+         system("pause");
+         system("cls");
+         menuLoja();break;
+      }
       printf("\nDigite o código do produto que deseja adicionar ao carrinho..: ");
       scanf("%d", &idAddCarrinho);
       printf("\nDigite a quantidade do produto que deseja adicionar ao carrinho..: ");
@@ -1008,6 +1014,12 @@ do
   listarCliente();
   printf("\nDeseja adicionar algum produto ao carrinho..? (1-Sim 0-Não): ");
   scanf("%d", &opcao);
+   if (opcao=0)
+      {
+         system("pause");
+         system("cls");
+         menuLoja();break;
+      }
   printf("\nDigite o código do produto que deseja adicionar ao carrinho..: ");
   scanf("%d", &idAddCarrinho);
   printf("\nDigite a quantidade do produto que deseja adicionar ao carrinho..: ");
