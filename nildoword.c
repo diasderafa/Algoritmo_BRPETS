@@ -53,20 +53,10 @@ void limpa_linha()
     scanf("%*c");
 }
 
-// Função cadastroCliente
- int cadastroCliente()
-    {                    
-      int i, opcao, opcao1;
-      int resp = FALSO;       
-                printf("\nPara finalizar a compra é necessário realizar o cadastro. Deseja fazer isso agora?\n");
-                printf("1 - Sim\n");
-                printf("2 - Não\n");
-                printf("Opção:");
-                scanf("%d", &confirmaCad);
-                if (confirmaCad==1)
-                {
-                    do 
-                    {
+// Função novoCad
+int novoCad()
+{
+  do{
                     printf("\n---------------------------------------------------------------------------------------------------------\n");
                     printf("|                                         Cadastro do Cliente                                           |\n");  
                     printf("---------------------------------------------------------------------------------------------------------\n");
@@ -112,11 +102,16 @@ void limpa_linha()
                     printf("1 - Sim\n");
                     printf("2 - Não\n");
                     printf("Opção:");
-                    scanf("%d", &respCliente);
-                    } while (respCliente==2);
+                    scanf("%d", &respCliente); 
+     } while (respCliente==2);
+    return 0;
+}
 
-                    if (respCliente==1)
-                    {
+//Função Pagamento
+int menuPag()
+{
+                        int i, opcao, opcao1, respClientefinal;
+                        int resp = FALSO; 
                         printf("\nEscolha uma forma pagamento\n\n");
                         printf("1 - Boleto bancário\n");
                         printf("2 - Cartão de crédito\n");
@@ -124,8 +119,9 @@ void limpa_linha()
                         printf("Opção:");
                         scanf("%d", &formPag);
 
-                         switch(formPag){
-                            case 1 : 
+                         switch(formPag)
+                         {
+                            case 1 : //boleto bancario
                              system("cls");
                              printf("\n***************DADOS DADOS FINAIS DA COMPRA***************\n\n\n");
                              printf("\n***************DADOS CADASTRADOS DO CLIENTE***************\n");
@@ -148,8 +144,8 @@ void limpa_linha()
                                     printf("\nNome          : %s", vetCarrinho[i].nomeCarrinho);
                                     printf("\nPreço unitário: %.2f", vetCad[i].precoProd);   
                                     printf("\nQtd           : %.0f", vetCarrinho[i].qtdCarrinho);               
+                                  }
                                 }
-                              }
                             resp = VERD;
                             totalCarrinho();
                              printf("\n\n*************************MÉTODO DE PAGAMENTO*********************\n");
@@ -202,8 +198,8 @@ void limpa_linha()
                                     printf("\nNome          : %s", vetCarrinho[i].nomeCarrinho);
                                     printf("\nPreço unitário: %.2f", vetCad[i].precoProd);   
                                     printf("\nQtd           : %.0f", vetCarrinho[i].qtdCarrinho);               
+                                  }
                                 }
-                              }
                             resp = VERD;
                             totalCarrinho();
                             char nomeCartao[100], numeroCartao[100], cvvCartao[100];
@@ -216,7 +212,7 @@ void limpa_linha()
                              printf("\nDigite o nome correspondente do cartão..: ");
                              gets(nomeCartao);
                              limpa_linha();
-                             printf("\\nDigite o código CVV localizado atras do cartão..: ");
+                             printf("\nDigite o código CVV localizado atras do cartão..: ");
                              gets(cvvCartao);
                              limpa_linha();
                              printf("\n\n*************************DADOS DO CARTÃO*********************\n");
@@ -245,7 +241,7 @@ void limpa_linha()
                              }                            
                              break;
 
-                            case 3 :
+                            case 3 : //pix
                              system("cls");
                              printf("\n***************DADOS DADOS FINAIS DA COMPRA***************\n\n\n");
                              printf("\n***************DADOS CADASTRADOS DO CLIENTE***************\n");
@@ -269,8 +265,8 @@ void limpa_linha()
                                     printf("\nNome          : %s", vetCarrinho[i].nomeCarrinho);
                                     printf("\nPreço unitário: %.2f", vetCad[i].precoProd);   
                                     printf("\nQtd           : %.0f", vetCarrinho[i].qtdCarrinho);               
+                                  }
                                 }
-                              }
                             resp = VERD;
                             totalCarrinho();
                              printf("\n\n*************************MÉTODO DE PAGAMENTO*********************\n");
@@ -306,23 +302,55 @@ void limpa_linha()
                              system("pause");
                              system("cls");
                              menuCliente();
-                            }
+                          }
+}
+
+
+// Função cadastroCliente
+ int cadastroCliente()
+    {                    
+      int i, opcao, opcao1, respClientefinal;
+      int resp = FALSO;       
+                printf("\n********Dados cadastrados atuais*********\n");
+                printf("\n Nome..: %s", nomeCliente);
+                printf("\n Documento..: %s", cpfCliente);
+                printf("\n Telefone..: %s", telefoneCliente);
+                printf("\n CEP..: %s", cepCliente);
+                printf("\n Rua..: %s", nomeRua);
+                printf("\n Número..: %s", numRua);
+                printf("\n Cidade..: %s", nomeCidade);
+                printf("\n Estado..: %s", nomeEstado);
+                printf("\n**********************************\n");
+                printf("\nOs dados cadastrados estão corretos?\n\n");
+                printf("1 - Sim\n");
+                printf("2 - Não\n");
+                printf("Opção:");
+                scanf("%d", &respClientefinal);
+                if (respClientefinal==1)
+                {
+                  menuPag();
+                }
+                else
+                {
+                printf("\nPara finalizar a compra é necessário realizar o cadastro. Deseja fazer isso agora?\n");
+                printf("1 - Sim\n");
+                printf("2 - Não\n");
+                printf("Opção:");
+                scanf("%d", &confirmaCad);
+                    if (confirmaCad==1)
+                    {
+                      novoCad();
+                      menuPag();
                     }
                     else
                     {
                     printf("Voltando ao Menu Anterior\n");
                     system("pause");
                     system("cls");
-                    menuCliente();   
+                    menuCliente();                     
                     }
                 }
-                else 
-                {
-                    printf("Voltando ao Menu Anterior\n");
-                    system("pause");
-                    system("cls");
-                    menuCliente();
-                }
+ 
     return (0);
     }
 
@@ -875,7 +903,7 @@ int petboxFixa()
   printf("\nIdeal para seu Pet entre 1 a 7 anos de vida!                                                            \n");
   printf("\n--------------------------------------------PetBox para idosos-------------------------------------------\n");
   printf("\nIdeal para seu Pet com mais de 7 (grande porte) e 12 (pequeno porte) anos de vida!                    \n\n");
-  printf("Deseja conhecer as opções?\n");
+  printf("\n\nDeseja conhecer as opções?\n");
   printf("1 - Sim                                                                                                 \n");
   printf("2 - Não                                                                                                  \n");
   scanf("%d", &opFixa);
